@@ -20,6 +20,10 @@ const types = {
   EVENT_UPDATE: '${TYPE_PREFIX}_UPDATE',
   EVENT_UPDATE_SUCCESS: '${TYPE_PREFIX}_UPDATE_SUCCESS',
   EVENT_UPDATE_FAILED: '${TYPE_PREFIX}_UPDATE_FAILED',
+
+  EVENT_DELETE: '${TYPE_PREFIX}_DELETE',
+  EVENT_DELETE_SUCCESS: '${TYPE_PREFIX}_DELETE_SUCCESS',
+  EVENT_DELETE_FAILED: '${TYPE_PREFIX}_DELETE_FAILED',
 }
 
 const state = {
@@ -122,8 +126,17 @@ const actions = {
       });
   },
 
-  deleteEvent({ commit }, id) {
+  deleteEvent({ commit, state }, id) {
+    commit(types.EVENT_DELETE, { id });
 
+    fetch(baseUrl + `/${id}`, {
+      method: 'DELETE'
+    })
+      .then(response => commit(types.EVENT_DELETE_SUCCESS, response))
+      .catch(err => {
+        console.error(err);
+        commit(type.EVENT_DELETE_FAILED, state);
+      });
   }
 };
 
@@ -173,9 +186,15 @@ const mutations = {
     state = oldState;
   },
 
-  deleteEvent(state, data) {
-    
-  }
+  [types.EVENT_DELETE] (state, { id }) {
+
+  },
+  [types.EVENT_DELETE_SUCCESS] (state, response) {
+    // console.log(response);
+  },
+  [types.EVENT_DELETE_FAILED] (state, oldState) {
+    state = oldState;
+  },
 };
 
 export default {
