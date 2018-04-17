@@ -16,5 +16,10 @@ export default {
 </script>
 
 <style lang="scss">
-
+#app > div > div:nth-child(2) {
+  position: absolute;
+  top: 52px;
+  left: 0;
+  right: 0;
+}
 </style>
