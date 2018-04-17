@@ -14,6 +14,8 @@ Vue.use(Buefy);
 Vue.use(FullCalendar);
 Vue.config.productionTip = false;
 
+import Calendar from './components/Calendar';
+Vue.component('calendar', Calendar);
 let Main = Vue.component('app', App);
 
 Main = new Main({
