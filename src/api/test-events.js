@@ -1,3 +1,7 @@
+/**
+ * This file can be imported to act as a source for events
+ */
+
 import moment from 'moment';
 
 let events = [

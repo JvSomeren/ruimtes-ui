@@ -1,3 +1,7 @@
+/**
+ * This file can be imported to act as a source for resources
+ */
+
 let resources = [
   {
     id: "1",
