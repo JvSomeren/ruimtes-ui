@@ -15,7 +15,9 @@ Vue.use(FullCalendar);
 Vue.config.productionTip = false;
 
 import Calendar from './components/Calendar';
+import EventModal from './components/EventModal';
 Vue.component('calendar', Calendar);
+Vue.component('event-modal', EventModal);
 let Main = Vue.component('app', App);
 
 Main = new Main({
